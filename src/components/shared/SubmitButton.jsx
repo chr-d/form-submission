@@ -1,12 +1,13 @@
 import { useFormStatus } from "react-dom";
 
-const SendButton = () => {
+const SubmitButton = ({ text, pendingText }) => {
   const { pending } = useFormStatus();
+
   return (
     <button disabled={pending} className="btn btn-neutral mt-4">
-      {pending ? "Sending..." : "Send"}
+      {pending ? pendingText : text}
     </button>
   );
 };
 
-export { SendButton };
+export { SubmitButton };

@@ -1,6 +1,7 @@
 import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback, Instructions, SendButton } from "../components";
 import { sendContactForm } from "../api";
+import { ErrorFallback, Instructions } from "../components";
+import { SubmitButton } from "../components/shared";
 
 const Contact = () => {
   const submitAction = async (formData) => {
@@ -23,7 +24,7 @@ const Contact = () => {
             <input className="input w-full" name="email" placeholder="Email" />
             <label className="label">Message</label>
             <textarea className="textarea w-full" name="message" placeholder="Your message" rows={4} />
-            <SendButton />
+            <SubmitButton text="Send" pendingText="Sending..." />
           </fieldset>
         </form>
       </ErrorBoundary>

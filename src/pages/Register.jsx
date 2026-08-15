@@ -1,6 +1,7 @@
 import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback, Instructions, RegisterButton } from "../components";
 import { registerNewsletter } from "../api";
+import { ErrorFallback, Instructions } from "../components";
+import { SubmitButton } from "../components/shared";
 
 const Register = () => {
   const submitAction = async (formData) => {
@@ -15,7 +16,7 @@ const Register = () => {
             <legend className="fieldset-legend">Register to our newsletter</legend>
             <label className="label">Email</label>
             <input className="input w-full" name="email" placeholder="Email" />
-            <RegisterButton />
+            <SubmitButton text="Register" pendingText="Registering..." />
           </fieldset>
         </form>
       </ErrorBoundary>
