@@ -3,5 +3,6 @@ import Instructions from "./Instructions";
 import SearchForm from "./SearchForm";
 import SearchResults from "./SearchResults";
 import { RegisterButton } from "./RegisterButton";
+import { SendButton } from "./SendButton";
 
-export { ErrorFallback, Instructions, SearchForm, SearchResults, RegisterButton };
+export { ErrorFallback, Instructions, SearchForm, SearchResults, RegisterButton, SendButton };

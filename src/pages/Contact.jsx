@@ -1,31 +1,33 @@
-import { ErrorBoundary } from 'react-error-boundary';
-import { ErrorFallback, Instructions } from '../components';
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback, Instructions, SendButton } from "../components";
+import { sendContactForm } from "../api";
 
 const Contact = () => {
+  const submitAction = async (formData) => {
+    const data = { firstName: formData.get("firstName"), lastName: formData.get("lastName"), email: formData.get("email"), message: formData.get("message") };
+    console.log(data);
+
+    await sendContactForm(data);
+  };
   return (
-    <div className='flex flex-col items-center'>
+    <div className="flex flex-col items-center">
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <form>
-          <fieldset className='fieldset bg-base-200 border-base-300 rounded-box w-lg border p-4'>
-            <legend className='fieldset-legend'>Contact Us</legend>
-            <label className='label'>First Name</label>
-            <input className='input w-full' name='firstName' placeholder='First Name' />
-            <label className='label'>Last Name</label>
-            <input className='input w-full' name='lastName' placeholder='Last Name' />
-            <label className='label'>Email</label>
-            <input className='input w-full' name='email' placeholder='Email' />
-            <label className='label'>Message</label>
-            <textarea
-              className='textarea w-full'
-              name='message'
-              placeholder='Your message'
-              rows={4}
-            />
-            <button className='btn btn-neutral mt-4'>Send</button>
+        <form action={submitAction}>
+          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-lg border p-4">
+            <legend className="fieldset-legend">Contact Us</legend>
+            <label className="label">First Name</label>
+            <input className="input w-full" name="firstName" placeholder="First Name" />
+            <label className="label">Last Name</label>
+            <input className="input w-full" name="lastName" placeholder="Last Name" />
+            <label className="label">Email</label>
+            <input className="input w-full" name="email" placeholder="Email" />
+            <label className="label">Message</label>
+            <textarea className="textarea w-full" name="message" placeholder="Your message" rows={4} />
+            <SendButton />
           </fieldset>
         </form>
       </ErrorBoundary>
-      <Instructions path='/contact.md' />
+      <Instructions path="/contact.md" />
     </div>
   );
 };
